@@ -12,21 +12,23 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 from pathlib import Path
 import os
+from dotenv import load_dotenv
+
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-import os
-from dotenv import load_dotenv
-
 env_path = load_dotenv(os.path.join(BASE_DIR, '.env'))
 load_dotenv(env_path)
+
+# env_path = load_dotenv(os.path.join(BASE_DIR, '.env'))
+# load_dotenv(env_path)
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-x$l$q1=cvnmr3g%jjl1(uu4(je^!cahf!r81v&)34+d9f164n_'
-# SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'django-insecure-x$l$q1=cvnmr3g%jjl1(uu4(je^!cahf!r81v&)34+d9f164n_')
 # SECURITY WARNING: don't run with debug turned on in production!
 
 DEBUG = True
@@ -34,7 +36,7 @@ DEBUG = True
 
 
 
-ALLOWED_HOSTS = ['Veeragokulraj.pythonanywhere.com', '127.0.0.1']
+ALLOWED_HOSTS = ['veeragokul.pythonanywhere.com', '127.0.0.1']
 
 
 # Application definition
@@ -156,6 +158,12 @@ EMAIL_USE_TLS = True
 
 import dj_database_url
 
+# DATABASE_URL = 'postgres://forum:Veera%4017@veeragokul.postgres.pythonanywhere-services.com:5432/forum'
+
+# # Configure the default database using DATABASE_URL
+# DATABASES = {
+#     'default': dj_database_url.parse(DATABASE_URL, conn_max_age=500, conn_health_checks=True)
+# }
 if 'DATABASE_URL' in os.environ:
     DATABASES['default'] = dj_database_url.config(
         conn_max_age=500,
@@ -173,4 +181,4 @@ STORAGES = {
     },
 }
 
-CSRF_TRUSTED_ORIGINS = ['https://Veeragokulraj.pythonanywhere.com']
+CSRF_TRUSTED_ORIGINS = ['https://veeragokul.pythonanywhere.com']
